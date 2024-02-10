@@ -1,5 +1,5 @@
 package edu.ucalgary.oop;
 
-public class ThirdClass {
+public class SeventhClass {
     
 }
