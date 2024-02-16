@@ -126,12 +126,6 @@ public class DisasterVictim {
         this.gender = gender;
     }
 
-    // + addPersonalBelonging(supply: Supply) :void
-    // + removePersonalBelonging(supply: Supply) :void
-    // + addFamilyConnection(familyConnection: FamilyRelation): void
-    // + removeFamilyConnection(familyConnection: FamilyRelation): void
-    // + addMedicalRecord(medicalRecord:MedicalRecord):void
-
     public void addPersonalBelonging(Supply personalBelongings) {
         if (this.personalBelongings == null) {
             this.personalBelongings = new Supply[1];
