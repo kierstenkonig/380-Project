@@ -9,6 +9,12 @@ public class MedicalRecord {
         this.location = location;
         this.treatmentDetails = treatmenDetails;
         this.dateOfTreatment = dateOfTreatment;
+        
+        if (dateOfTreatment.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            this.dateOfTreatment = dateOfTreatment;
+        } else {
+            throw new IllegalArgumentException("Invalid date format");
+        }
     }
 
     //getters
