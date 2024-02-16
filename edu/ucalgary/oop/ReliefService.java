@@ -60,10 +60,45 @@ public class ReliefService {
 
     public void setDateOfInquiry(String dateOfInquiry){
         if (dateOfInquiry.matches("\\d{4}-\\d{2}-\\d{2}")) {
+                         // Split the date string into year, month, and day
+         String[] parts = dateOfInquiry.split("-");
+         int year = Integer.parseInt(parts[0]);
+         int month = Integer.parseInt(parts[1]);
+         int day = Integer.parseInt(parts[2]);
+ 
+         // Check if the year is a leap year
+         boolean isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+ 
+         // Validate the month
+         if (month < 1 || month > 12) {
+             throw new IllegalArgumentException("Invalid month");
+         }
+ 
+         // Validate the day
+         if (day < 1 || day > 31) {
+             throw new IllegalArgumentException("Invalid day");
+         }
+ 
+         // Handle February
+         if (month == 2) {
+             if (isLeapYear && day > 29) {
+                 throw new IllegalArgumentException("Invalid day for February in a leap year");
+             } else if (!isLeapYear && day > 28) {
+                 throw new IllegalArgumentException("Invalid day for February in a non-leap year");
+             }
+         }
+         
+         // Handle months with 30 days
+         if (month == 4 || month == 6 || month == 9 || month == 11) {
+             if (day > 30) {
+                 throw new IllegalArgumentException("Invalid day for the specified month");
+             }
+         }
             this.dateOfInquiry = dateOfInquiry;
         } else {
             throw new IllegalArgumentException("Invalid date format");
         }
+
     }
 
     public void setInfoProvided(String infoProvided){
